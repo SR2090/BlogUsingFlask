@@ -10,3 +10,6 @@ https://pythonprogramming.net/flask-get-post-requests-handling-tutorial/
 
 How to autoincrement table value 
 https://www.tutorialspoint.com/how-to-add-auto-increment-to-column-in-mysql-database-using-phpmyadmin
+
+Added mysql support
+pip install mysqlclient
