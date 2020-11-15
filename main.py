@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from datetime import datetime
 # For adding data base
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
@@ -18,7 +19,7 @@ db = SQLAlchemy(app)
 # This class will define the db table
 
 
-class Contacts(db.Model):
+class Contact(db.Model):
     """
     sno, name, email, phone_num, msg, date
     """
@@ -44,6 +45,14 @@ def contact():
         email = request.form.get('email')
         phone = request.form.get('phone')
         message = request.form.get('message')
+        """
+        sno, name, email, phone_num, msg, date
+        """
+        entry = Contact(name=name, phone_num=phone, msg=message,
+                        email=email, date=datetime.now())
+        # session add and commit to db
+        db.session.add(entry)
+        db.session.commit(entry)
     return render_template('contact.html')
 
 
