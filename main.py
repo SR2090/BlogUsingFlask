@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 # For adding data base
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 
 
 class Contacts(db.Model):
-    """ 
+    """
     sno, name, email, phone_num, msg, date
     """
     sno = db.Column(db.Integer, primary_key=True)
@@ -35,8 +35,15 @@ def homepage():
     return render_template('index.html')
 
 
-@app.route('/contact')
+@app.route('/contact', methods=["GET", "POST"])
 def contact():
+    if(request.method == 'POST'):
+        """ Add entry to db """
+        # Getting data from the form
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        message = request.form.get('message')
     return render_template('contact.html')
 
 
