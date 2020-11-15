@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 # This class will define the db table
 
 
-class Contact(db.Model):
+class Contacts(db.Model):
     """
     sno, name, email, phone_num, msg, date
     """
@@ -48,11 +48,12 @@ def contact():
         """
         sno, name, email, phone_num, msg, date
         """
-        entry = Contact(name=name, phone_num=phone, msg=message,
-                        email=email, date=datetime.now())
+        entry = Contacts(name=name, phone_num=phone, msg=message,
+                         email=email, date=datetime.now())
         # session add and commit to db
         db.session.add(entry)
-        db.session.commit(entry)
+        # Commiting the values into the db
+        db.session.commit()
     return render_template('contact.html')
 
 
