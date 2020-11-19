@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from datetime import datetime
 # For adding data base
 from flask_sqlalchemy import SQLAlchemy
+import json
 app = Flask(__name__)
 # Resource
 # The home page of the blog application
@@ -15,6 +16,12 @@ app = Flask(__name__)
 # Adding the password and database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/selfreflection'
 db = SQLAlchemy(app)
+
+# Server variable 
+local_server = True;
+# Reading the config file 
+with open('config.json', 'r') as c:
+    params = json.load(c)["params"]
 
 # This class will define the db table
 
