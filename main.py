@@ -112,12 +112,12 @@ def contact():
 def index():
     return render_template('index.html',params = params)
 
-
+// BUG
 @app.route('/post')
 def post():
     return render_template('post.html',params = params)
 
-# 
+#  // TODO
 @app.route('/post/<string:post_slug>', methods=['GET'])
 def post_route(post_slug):
     # Filter posts by slug post_slug is query
