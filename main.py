@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 from datetime import datetime
+from flask_mail import Mail 
 # For adding data base
 from flask_sqlalchemy import SQLAlchemy
 import json
 app = Flask(__name__)
+
 # Resource
 # The home page of the blog application
 
@@ -20,6 +22,19 @@ with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 # Server variable 
 local_server = True;
+
+# Sending Email Credential Configuration
+app.config.update(
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = '465',
+    MAIL_USE_SSL = True,
+    MAIL_USERNAME = params["gmail_user"],
+    MAIL_PASSWORD = params["gmail_passwd"]
+)
+
+# Host email config
+mail = Mail(app)
+
 
 # Server configuration
 if(local_server):
