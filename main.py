@@ -13,19 +13,20 @@ app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
 
-# Server variable 
-local_server = True;
+
 
 # Reading the config file 
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
+# Server variable 
+local_server = True;
 
 # Server configuration
 if(local_server):
     # This will allow easy configuration change
     app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
 else:
-    pass
+    app.config['SQLALCHEMY_DATABASE_URI'] = params["prod_uri"]
 
 # We need to connect to mysql data base
 # Adding the password and database
