@@ -12,16 +12,25 @@ app = Flask(__name__)
 # This will connect to sqlite db
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
-# We need to connect to mysql data base
-# Adding the password and database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/selfreflection'
-db = SQLAlchemy(app)
 
 # Server variable 
 local_server = True;
+
 # Reading the config file 
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
+
+# Server configuration
+if(local_server):
+    # This will allow easy configuration change
+    app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
+else:
+    pass
+
+# We need to connect to mysql data base
+# Adding the password and database
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/selfreflection'
+db = SQLAlchemy(app)
 
 # This class will define the db table
 
