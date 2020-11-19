@@ -5,6 +5,8 @@
     "prod_uri": "mysql://root:@localhost/selfreflection",
     "fb_url": "https://www.facebook.com/",
     "tw_url": "https://twitter.com/",
-    "git_url": "https://github.com/"
+    "git_url": "https://github.com/",
+    "gmail_user": "...",
+    "gmail_passwd": "..."
   }
 }
