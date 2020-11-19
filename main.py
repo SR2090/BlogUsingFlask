@@ -63,6 +63,17 @@ class Contacts(db.Model):
     date = db.Column(db.String(12), nullable=False)
 
 
+# Class for Posts
+class Posts(db.Model):
+    """
+    sno, title, content, date, slug
+    """
+    sno = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), unique=False, nullable=False)
+    content = db.Column(db.String(200), nullable=False)
+    # date = db.Column(db.String(12), nullable=False)
+    slug = db.Column(db.String(25), nullable =False)
+
 @app.route('/')
 def homepage():
     return render_template('index.html', params = params)
@@ -106,6 +117,13 @@ def index():
 def post():
     return render_template('post.html',params = params)
 
+# 
+@app.route('/post/<string:post_slug>', methods=['GET'])
+def post_route(post_slug):
+    # Filter posts by slug post_slug is query
+    post = Posts.query.filter_by(slug=post_slug).first()
+    # retrieve the post and display it 
+    return render_template('post.html',params = params,post=post)
 
 @app.route('/about')
 def about():
