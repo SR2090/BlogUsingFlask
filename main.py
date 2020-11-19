@@ -87,13 +87,13 @@ def contact():
         # Commiting the values into the db
         db.session.commit()
 
-        # I want to send mail after commit
-        mail.send_message('Title of the mail'
-        ,msg = message, 
-        recipients= [params['gmail-user']],
-        body = message + '\n' + phone
-        # Whenever this runs the email will be sent
-        )
+        # # I want to send mail after commit
+        # mail.send_message('Title of the mail'
+        # ,msg = message, 
+        # recipients= [params['gmail-user']],
+        # body = message + '\n' + phone
+        # # Whenever this runs the email will be sent
+        # )
     return render_template('contact.html',params = params)
 
 
