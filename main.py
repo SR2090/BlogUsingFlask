@@ -50,7 +50,7 @@ class Contacts(db.Model):
 
 @app.route('/')
 def homepage():
-    return render_template('index.html')
+    return render_template('index.html', params = params)
 
 
 @app.route('/contact', methods=["GET", "POST"])
@@ -71,22 +71,22 @@ def contact():
         db.session.add(entry)
         # Commiting the values into the db
         db.session.commit()
-    return render_template('contact.html')
+    return render_template('contact.html',params = params)
 
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',params = params)
 
 
 @app.route('/post')
 def post():
-    return render_template('post.html')
+    return render_template('post.html',params = params)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html',params = params)
 
 
 if __name__ == '__main__':
