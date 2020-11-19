@@ -1,0 +1,9 @@
+//  For easy handling
+
+{
+  "params": {
+    "local_server": "True",
+    "local_uri": "mysql://root:@localhost/selfreflection",
+    "prod_uri": "mysql://root:@localhost/selfreflection"
+  }
+}
