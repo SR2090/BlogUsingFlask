@@ -9,6 +9,6 @@
     "gmail_user": "...",
     "gmail_passwd": "...",
     "about": "This is made with Flask SQL Alchemy frontend is Bootstrap v4",
-    "num-of-posts": ""
+    "num-of-posts": "5"
   }
 }
